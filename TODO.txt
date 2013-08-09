@@ -1,0 +1,6 @@
+1. Set up tox
+2. Get python inotify and try it out
+3. Read about signals: sigints, etc.
+4. Test running django tests from outside
+5. Add some remote
+
