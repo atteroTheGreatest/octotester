@@ -1,6 +1,4 @@
-1. Set up tox
-2. Get python inotify and try it out
-3. Read about signals: sigints, etc.
 4. Test running django tests from outside
-5. Add some remote
-
+5. Implement basic test running using unittest.
+6. Review code and improve it.
+7. Write lot's of unit tests :)

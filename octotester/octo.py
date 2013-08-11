@@ -6,7 +6,7 @@ from watcher import watch_for_changes_on_disk
 class Octo(object):
     def run(self):
         changes_queue = multiprocessing.Queue()
-        master = TestMaster(changes_queue)
+        master = TestMaster(changes_queue, self.directory)
 
         watcher = multiprocessing.Process(target=watch_for_changes_on_disk, args=(changes_queue, self.directory,))
 
