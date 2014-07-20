@@ -1,9 +1,7 @@
-
 import pyinotify
 
 
 class EventHandler(pyinotify.ProcessEvent):
-
     def __init__(self, changes_queue, *args, **kwargs):
         self.changes_queue = changes_queue
         super(EventHandler, self).__init__(*args, **kwargs)

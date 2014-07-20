@@ -85,7 +85,7 @@ class TaskExecutor(object):
                              traceback.format_exc())
 
     def _serve_tasks(self):
-        """ Main loop that does serves questions to the pool. """
+        """Main loop that does serve questions to the pool."""
         while True:
             tasks = self.get_new_tasks()
 
@@ -177,7 +177,6 @@ class TaskExecutor(object):
             sys.exit(0)
 
     def handle(self, *args, **options):
-
         logging.info(u'Starting %d pool processes.', NUMBER_OF_PROCESSES)
 
         self._setup_signals()

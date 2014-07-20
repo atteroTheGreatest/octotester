@@ -1,10 +1,10 @@
+import termcolor
+import unittest2
+
+from collections import defaultdict
+from Queue import Empty as QEmpty
 
 from producer_consumers import TaskExecutor
-
-from Queue import Empty as QEmpty
-import unittest2
-import termcolor
-from collections import defaultdict
 
 
 def create_formatted_report(report_text):
@@ -14,10 +14,11 @@ def create_formatted_report(report_text):
         text = termcolor.colored(report_text, 'green')
     return text
 
+
 class TestMaster(object):
     def __init__(self, changes_queue, root_directory):
         self.changes_queue = changes_queue
-        
+
         self.executor = TaskExecutor(get_new_tasks=self.get_test_names_to_run,
                                      process_task=TestRunner(root_directory),
                                      store_result=self.display_result)
@@ -26,7 +27,7 @@ class TestMaster(object):
         try:
             while True:
                 change = self.changes_queue.get(block=False)
-                
+
                 names.append(change)
         except QEmpty:
             pass
@@ -38,7 +39,6 @@ class TestMaster(object):
     def display_result(self, output):
         text_to_display = create_formatted_report(output)
         print text_to_display
-
 
     def run(self):
         self.executor.handle()
@@ -59,7 +59,7 @@ class ChangeToTestMapper(object):
                 suite_name = path_parts[-1]
                 self.test_file_to_suite[file_name][suite_name] = sub_test
                 print self.test_file_to_suite[file_name][suite_name]
-                       
+
     def validate_change(self, change):
         return True
 
